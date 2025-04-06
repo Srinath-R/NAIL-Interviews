@@ -21,7 +21,7 @@ class Order:
         self.quantity = quantity
 
 class PriceLevel(DLL):
-    def match_order(self, quantity: int):
+    def match_order(self, quantity: int) -> int:
         total_trade_quantity = 0
         while quantity > 0 and self.head:
             order = self.head
@@ -123,8 +123,8 @@ class OrderBook:
             self.update_best_price(order.side)
         print(f"Order {order_id} has been cancelled.")
 
-    def get_volume_at_price(self, price: float, side: Side):
-        return self.volumes.get((side, price), None)
+    def get_volume_at_price(self, price: float, side: Side) -> int:
+        return self.volumes.get((side, price), 0)
 
 # Example Usage
 ob = OrderBook(price_min=100.0, price_max=110.0, tick_size=0.5)
